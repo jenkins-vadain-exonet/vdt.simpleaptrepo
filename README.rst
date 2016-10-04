@@ -1,8 +1,12 @@
-# vdt.simpleaptrepo
+=================
+vdt.simpleaptrepo
+=================
+
 Simple command line tool to create apt repositories. This will work on debian and ubuntu.
 
 Installation:
--------------
+=============
+
 First install from pypi:
 
     pip install vdt.simpleaptrepo
@@ -17,7 +21,7 @@ To show which commands are available:
     simpleapt --help
 
 Create a repository:
--------------------
+====================
 First you need to create a gpg key to sign your packages with:
 
     simpleapt create-gpg-key
@@ -36,7 +40,8 @@ Now create a repository:
     Now add a component with the 'add-component' command
 
 Create a component:
--------------------
+===================
+
 In one repository you have multiple components:
   
     simpleapt add-component myrepo test
@@ -44,15 +49,16 @@ In one repository you have multiple components:
 You will see what you need to do now:
 
     Component 'test' created in repo 'myrepo'
-    Now add some unsigned debian packages in the directory
-    and run the 'update-repo' command
 
-    Configure your webservice to set the www-root to /www
+    Now add some unsigned debian packages in the directory
+    and run the 'update-repo' command (see the 'add packages' section below)
+
+    Configure your webservice to set the www-root to /www/
     Add http://<hostname>/myrepo/test / to your sources.list
     
     Add the key on the host where you want to install the packages.
     (This is only needed once per repository)
-    wget -qO - http://<hostname>/myrepo/keyfile | sudo apt-key add -
+    wget -qO - http://<hostname>/myrepo/test/keyfile | sudo apt-key add -
 
 Add some more if you like:
 
@@ -69,7 +75,7 @@ See that our repo is there:
        main
 
 Add packages:
--------------
+=============
 
 Copy some debian package into a component and update the repo:
 
@@ -88,7 +94,8 @@ Now you can install these packages!
 
 
 Useful URLS:
-------------
+============
+
 http://blog.packagecloud.io/eng/2014/10/28/howto-gpg-sign-verify-deb-packages-apt-repositories/
 
 https://keyring.debian.org/creating-key.html
