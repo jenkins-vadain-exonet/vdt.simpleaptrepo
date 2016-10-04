@@ -9,14 +9,20 @@ Installation:
 
 First install from pypi:
 
+.. code-block:: bash
+
     pip install vdt.simpleaptrepo
     
 This tool is a wrapper for some debian specific packages, so you will need to install them first:
+
+.. code-block:: bash
 
     apt-get install gnupg dpkg-sig apt-utils
 
 
 To show which commands are available:
+ 
+.. code-block:: bash
  
     simpleapt --help
 
@@ -24,9 +30,13 @@ Create a repository:
 ====================
 First you need to create a gpg key to sign your packages with:
 
+.. code-block:: bash
+
     simpleapt create-gpg-key
     
 Copy and remember the key's hash. The output looks something like this:
+
+.. code-block:: bash
 
     gpg: key 10FB8BDC marked as ultimately trusted
     
@@ -34,19 +44,26 @@ So copy the `10FB8BDC` hash, you will need it later.
 
 Now create a repository:
 
+.. code-block:: bash
+
     simpleapt create-repo myrepo /www/ --gpgkey 10FB8BDC
     
     Repository 'myrepo' created
     Now add a component with the 'add-component' command
 
+
 Create a component:
 ===================
 
 In one repository you have multiple components:
-  
+
+.. code-block:: bash
+
     simpleapt add-component myrepo test
 
 You will see what you need to do now:
+
+.. code-block:: bash
 
     Component 'test' created in repo 'myrepo'
 
@@ -62,10 +79,14 @@ You will see what you need to do now:
 
 Add some more if you like:
 
+.. code-block:: bash
+
     simpleapt add-component myrepo staging
     simpleapt add-component myrepo production
 
 See that our repo is there:
+
+.. code-block:: bash
 
     simpleapt list-repos
     
@@ -77,7 +98,9 @@ See that our repo is there:
 Add packages:
 =============
 
-Copy some debian package into a component and update the repo:
+Copy some debian package into a component's directory and update the repo:
+
+.. code-block:: bash
 
     simpleapt update-repo myrepo test
 
